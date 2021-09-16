@@ -1,0 +1,64 @@
+name: travel_buddy
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.1+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Icons
+  cupertino_icons: ^1.0.2
+  flutter_vector_icons: ^1.0.0
+
+  # Device
+  flutter_dotenv: ^5.0.2
+
+  # Utility
+  provider: ^6.0.0
+  freezed_annotation: ^0.14.3
+
+  # Device
+
+  # UI
+  flutter_svg: ^0.22.0
+  cached_network_image: ^3.1.0
+  google_fonts: ^2.1.0
+  smooth_page_indicator: ^0.3.0-nullsafety.0
+  flutter_staggered_grid_view: ^0.4.0
+  animated_splash_screen: ^1.1.0
+  flutter_rating_bar: ^4.0.0
+  card_swiper: ^1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.1.2
+  json_serializable: 5.0.0
+  freezed: ^0.14.5
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/config/
+    - assets/data/
+    - assets/images/
+    - assets/images/background/
+    - assets/images/ui/
+    - assets/images/user/
+    - assets/svg/
+    - assets/svg/icon/

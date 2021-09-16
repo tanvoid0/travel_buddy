@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "cover": "image",
+    "description": "Unpredictable tour of cox's bazar with best friends!",
+    "trip": ["Dhaka", "Coxsbazar"],
+    "createdAt": "10 Apr 2021",
+    "reactions": {
+      "like": 136,
+      "amazed": 32,
+      "excited": 324,
+      "support": 12
+    }
+  },
+  {
+    "id": "2",
+    "cover": "image",
+    "description": "Unpredictable tour of cox's bazar with best friends!",
+    "trip": ["Dhaka", "Coxsbazar"],
+    "createdAt": "10 Apr 2021",
+    "reactions": {
+      "like": 136,
+      "amazed": 32,
+      "excited": 324,
+      "support": 12
+    }
+  },
+  {
+    "id": "2",
+    "cover": "image",
+    "description": "Unpredictable tour of cox's bazar with best friends!",
+    "trip": ["Dhaka", "Coxsbazar"],
+    "createdAt": "10 Apr 2021",
+    "reactions": {
+      "like": 136,
+      "amazed": 32,
+      "excited": 324,
+      "support": 12
+    }
+  }
+]

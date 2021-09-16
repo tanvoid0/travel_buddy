@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "sdlkfjsdf",
+    "description": "I want a travel partner to go with my trip",
+    "date": [
+      "23 Mar 2020",
+      "31 Mar 2020"
+    ],
+    "budget": {
+      "min": "80",
+      "max": "100",
+      "currency": "USD"
+    }
+  },
+  {
+    "_id": "sdlkfjsdf",
+    "description": "To touch the cloud and hiking into konglak mountain. Join with me girl",
+    "date": [
+      "30 Apr 2020",
+      "3 May 2020"
+    ],
+    "budget": {
+      "min": "60",
+      "max": "80",
+      "currency": "USD"
+    }
+  }
+]

@@ -1,0 +1,108 @@
+import 'package:daery/data/constant/on_boarding_data.dart';
+import 'package:daery/data/provider/theme_state.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({Key? key}) : super(key: key);
+
+  @override
+  _OnBoardingPageState createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
+  final _pageController = PageController();
+  var _index = 0;
+  List<OnBoardingData> _onBoardingData = onBoardingData;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+          child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Skip Button
+          Positioned(
+            top: 20,
+            right: 20,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(ThemeConst.greyColor),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(color: Colors.transparent)))),
+              child: Text(
+                "Skip",
+                style: GoogleFonts.nunito(color: Colors.black),
+              ),
+              onPressed: () {},
+            ),
+          ),
+
+          // image
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              margin: EdgeInsets.only(top: 150),
+              height: 450,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/ui/on_boarding_1.png'),
+                ),
+              ),
+            ),
+          ),
+
+          // Title
+          Positioned(
+            bottom: 200,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Find Travel Partner",
+                  maxLines: 2,
+                  style: GoogleFonts.nunito(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  width: MediaQuery.of(context).size.width - 100,
+                  child: Text(
+                    "Discover other Bangladeshi traveler in the same destination at the same time",
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    style: GoogleFonts.nunito(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Positioned(
+            bottom: 100,
+            child: SmoothPageIndicator(
+              controller: _pageController,
+              count: _onBoardingData.length,
+              effect: ExpandingDotsEffect(
+                activeDotColor: Color(0xFFFFFFFF),
+                dotColor: Color(0xFFFF5153).withAlpha(50),
+                dotHeight: 4.8,
+                dotWidth: 10,
+                spacing: 15,
+              ),
+            ),
+          ),
+        ],
+      )),
+    );
+  }
+}

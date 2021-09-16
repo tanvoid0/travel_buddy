@@ -1,0 +1,143 @@
+import 'dart:ui';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:travel_buddy/data/constant/constants.dart';
+import 'package:travel_buddy/data/data.dart';
+import 'package:travel_buddy/ui/page/home/components/travel_story_list_view.dart';
+import 'package:travel_buddy/ui/page/place/place_page.dart';
+import 'package:travel_buddy/ui/widget/components/bottom_nav.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'components/favorite_accommodation_list_view.dart';
+import 'components/favorite_guid_list_view.dart';
+import 'components/favorite_transportation_list_view.dart';
+import 'components/trending_place_swiper.dart';
+import 'components/trip_view.dart';
+
+class HomePage extends StatelessWidget {
+  static const routeName = "/home";
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: 400,
+                child: Stack(
+                  children: <Widget>[
+                    ClipPath(
+                      clipper: CurveClipper(),
+                      child: Container(
+                        color: Theme.of(context).primaryColor,
+                        height: 320,
+                      ),
+                    ),
+                    Positioned(
+                      top: 20,
+                      left: 20,
+                      child: Container(
+                        width: 200,
+                        child: SvgPicture.asset(Constants.logo_white_svg),
+                      ),
+                    ),
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                "https://randomuser.me/api/portraits/men/62.jpg"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 120,
+                      left: 20,
+                      child: Text(
+                        "Trending Place",
+                        style: GoogleFonts.comfortaa(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 48 * 0.4,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 120,
+                      right: 20,
+                      child: TextButton(
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.comfortaa(
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              fontSize: 28 * 0.4),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: TrendingPlaceSwiper(
+                        data: places,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: <Widget>[
+                    TripSwiper(data: trips),
+                    SizedBox(height: 10),
+                    TravelStoryListView(data: travelStories),
+                    SizedBox(height: 10),
+                    FavoriteGuideListView(data: guides),
+                    SizedBox(height: 10),
+                    FavoriteAccommodationListView(data: accommodations),
+                    SizedBox(height: 10),
+                    FavoriteTransportationListView(data: guides),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: bottomNav(context),
+    );
+  }
+}
+
+class CurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    int curveHeight = 40;
+    Offset controlPoint = Offset(size.width / 2, size.height + curveHeight);
+    Offset endPoint = Offset(size.width, size.height - curveHeight);
+
+    Path path = Path()
+      ..lineTo(0, size.height - curveHeight)
+      ..quadraticBezierTo(
+          controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
